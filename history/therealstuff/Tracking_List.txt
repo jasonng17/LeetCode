@@ -1,0 +1,12 @@
+Tracking list
+
+Binary Trees
+    - Level order tree traversal
+    
+Array
+    - Shortest word distance
+    - Two sum
+        - Two sum data structure design
+        - Input is a BST
+        - 3sum
+    
