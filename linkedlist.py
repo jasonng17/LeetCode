@@ -31,6 +31,9 @@ if __name__ == "__main__":
     n2 = Node(2)
     n3 = Node(3)
 
+    # Concept: you can pass a class object into a main class
+    # This allows the main class to contain the sub-class objects
+    # and methods
     llist.head = n1
     n1.next = n2
     n2.next = n3
