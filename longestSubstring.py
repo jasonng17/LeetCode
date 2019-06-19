@@ -14,7 +14,7 @@ Explanation: The answer is "wke", with the length of 3.
 '''
 
 '''
-Approach
+Approach #1
     Maintain a dict of each char
     Loop through string
         If key does not exist, add key to current seq
@@ -47,6 +47,45 @@ class Solution(object):
 
 #string = "GEEKSFORGEEKS"
 string = "ABDEFGABEF"
+subsequence = Solution()
+length = subsequence.lengthOfLongestSubstring(string)
+print(length)
+
+'''
+Approach #2: Sliding Window (aka 2 pointer)
+Add the character located at the right index of our input string into the set, checking if it exists.
+If does not exists:
+    add to set
+    right++ (expand our window), update max
+If exists:
+    remove the character at the left pointer from the set
+    left++ (move our window)
+Repeat until left and right index at the end of input string
+'''
+class Solution(object):
+    def lengthOfLongestSubstring(self, string):
+        """
+        :type s: str
+        :rtype: int
+        """
+        left = 0
+        right = 0
+        maxlen = 0
+        subset = set()
+        while left or right < len(string) + 1:
+            if string[right] not in subset:
+                print("adding {}".format(string[right]))
+                subset.add(string[right])
+                right = right + 1
+                maxlen = max(maxlen, right-left)
+            else:
+                print("removing {}".format(string[left]))
+                subset.remove(string[left])
+                left = left + 1
+
+#string = "GEEKSFORGEEKS"
+#string = "ABDEFGABEF"
+string = "pwwkew"
 subsequence = Solution()
 length = subsequence.lengthOfLongestSubstring(string)
 print(length)
