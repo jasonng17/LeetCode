@@ -72,7 +72,7 @@ class Solution(object):
         right = 0
         maxlen = 0
         subset = set()
-        while left or right < len(string) + 1:
+        while left < len(string) and right < len(string):
             if string[right] not in subset:
                 print("adding {}".format(string[right]))
                 subset.add(string[right])
@@ -82,6 +82,7 @@ class Solution(object):
                 print("removing {}".format(string[left]))
                 subset.remove(string[left])
                 left = left + 1
+        return maxlen
 
 #string = "GEEKSFORGEEKS"
 #string = "ABDEFGABEF"
