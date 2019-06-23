@@ -11,5 +11,6 @@ Idea:
 - Whenever you see sorted array, it is a hint that this is a binary search problem
 - You know that the medium for two arrays must be somewhere in between the medium of each of the 2 arrays.
 - CONDITION: We want to partition the 2 arrays such that the number of elements in each half is the same AND the elements in the left half must be smaller or equal to every element in the right half
-- 
+- If we take x elements from the first array to our left part, it means that we need to take (len(a) + len(b) + 1) / 2 — x elements from the second array. a and b = our arrays
+- We should continue to cut as long as high > low
 """
