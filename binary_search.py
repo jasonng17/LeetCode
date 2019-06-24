@@ -4,13 +4,13 @@ Implement binary search
 
 def binarysearch(arr, target):
     low = 0
-    high = len(arr)
-    while low < high:
+    high = len(arr) - 1
+    while low <= high:
         mid = (high + low) // 2
-        if arr[mid] > target:
-            high = mid + 1
-        elif arr[mid] < target:
-            low = mid - 1
+        if arr[mid] < target:
+            low = mid + 1
+        elif arr[mid] > target:
+            high = mid - 1
         else:
             return mid
     return -1
