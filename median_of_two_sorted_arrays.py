@@ -12,6 +12,9 @@ Idea:
 - You know that the medium for two arrays must be somewhere in between the medium of each of the 2 arrays.
 - CONDITION: We want to partition the 2 arrays such that the number of elements in each half is the same AND the elements in the left half must be smaller or equal to every element in the right half
 - If we take x elements from the first array to our left part, it means that we need to take (len(a) + len(b) + 1) / 2 — x elements from the second array.
+
+Reference:
+https://www.youtube.com/watch?v=LPFhl65R7ww&t=1252s
 """
 
 import sys
@@ -24,14 +27,14 @@ def findMedianSortedArrays(nums1, nums2):
     """
     # Swap position if nums1 is greater length than nums2
     if len(nums1) > len(nums2):
-        findMedianSortedArrays(nums2, nums1)
+        return findMedianSortedArrays(nums2, nums1)
     
     high = len(nums1)
     low = 0
     x = len(nums1)
     y = len(nums2)
 
-    while low < high:
+    while low <= high:
         partitionX = (high+low)//2
         partitionY = (x+y+1)//2 - partitionX
         print("Low is {} and High is {}".format(low, high))
@@ -40,7 +43,7 @@ def findMedianSortedArrays(nums1, nums2):
         maxleftY = -sys.maxsize if partitionY == 0 else nums2[partitionY - 1]
         minrightX = sys.maxsize if partitionX == x else nums1[partitionX]
         minrightY = sys.maxsize if partitionY == y else nums2[partitionY]
-        if maxleftX < minrightY and maxleftY < minrightX:
+        if maxleftX <= minrightY and maxleftY <= minrightX:
             if (x+y) % 2 == 0:
                 return (max(maxleftX, maxleftY) + min(minrightX, minrightY)) / 2
             else:
@@ -51,8 +54,8 @@ def findMedianSortedArrays(nums1, nums2):
             high = partitionX - 1
         time.sleep(1)
 
-nums1 = [23,26,31,35]
-nums2 = [3,5,7,9,11,16]
+nums2 = [23,26,31,35]
+nums1 = [3,5,7,9,11,16]
 result = findMedianSortedArrays(nums1, nums2)
 if result != -1: 
     print("Median {}".format(result))
